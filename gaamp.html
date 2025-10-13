@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Kode+Mono:wght@400..700&display=swap');
+
+body{
+  background:#F1F1F1;
+  height:100vh;
+}
+
+
+.card-content{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  font-family:"Jura",sans-serif;
+}
+
+.open-layout{
+  justify-content:center;
+}
+
+.step-count{font-size:2.5rem;font-family:"Kode Mono",monospace;font-weight:700;}
+.card-title{font-size:3.5rem;font-weight:700;color:#282828;line-height:1;padding-bottom:40px;}
+.arrow{font-size:1rem;font-weight:bold;color:red;cursor:pointer;}
+.top-left{top:10%;left:10%;}
+.bottom-right{bottom:8%;right:10%;}
+
+.section-label{position:absolute;
+  top: 0px;
+    left:55%;
+  text-transform: uppercase;
+    font-size:2rem;
+    font-weight:700;
+    color:#282828;
+  }
+
+   .svg-card {
+      width: 1100px;        
+      max-width: 100%;
+      display: block;
+      margin:auto;
+    }
+    .card-content-red {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;      
+      padding: 3rem;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: right;
+    }
+    .card-content-red h1 {
+      font-size: 10rem;
+      font-weight: 800;
+      margin-bottom:20px;
+      line-height: 1;
+  font-family:"Jura",sans-serif;
+font-weight: 700;
+font-size: 10rem;
+line-height: 130px;
+letter-spacing: -0.05em;
+color: #FFFFFF;
+
+
+    }
+    .card-content-red p {
+      font-size: 4rem;
+      margin-bottom: 0;
+  font-family:"Jura",sans-serif;
+font-weight: 700;
+/* letter-spacing: -0.1em; */
+color: #EBEBEB;
+padding-top: 50px;
+cursor: pointer;
+    }
+    .card-content-red{
+      position: relative;
+      padding: 100px;
+    }
+    .logo{
+      position: absolute;
+      bottom: 7%;
+      left: 7%;
+    }
+    .connerside{
+      position: absolute;
+      top: 0%;
+      left: 0%;
+    }
+.svg-card path {
+  pointer-events: none; 
+}
+
+/* =================================================opencad======================== */
+.open-layout{
+  width: 100%;
+  padding: 30px;
+}
+.open-layout .form-control {
+   
+    margin-block: 5px;
+    display: block;
+    width: 100%;
+    padding:3px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #212529 !important;
+    line-height: 1.5;
+    background-color: transparent;
+    font-family: "Jura",sans-serif;
+ border: 1px solid  transparent;
+}
+.open-layout .form-control::placeholder{
+    color: #282828;
+
+}
+.form-control:focus {
+    border-color:#b8b7b7;
+    border: 1px solid;
+    background-color: transparent;
+    outline: none;
+    color: #282828;
+    box-shadow: none;
+}
+
+.card-title-open {
+    font-size: 2.5rem;
+    margin-block:20px;
+    text-transform: uppercase;
+        font-family: "Jura",sans-serif;
+        font-weight: 700;
+letter-spacing: -0.05em;
+color: #282828;
+line-height: 1;
+margin-top: 100px;
+}
+.open-layout .section-label {
+    position: absolute;
+    top: -2%;
+    left:54%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #282828;
+  font-family:"Jura",sans-serif;
+
+}
+
+
+
+.custom-check input[type="checkbox"] {
+  display: none; 
+}
+
+.custom-check label {
+  display: inline-block;
+  padding: 10px 20px 10px 0px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family:"Jura",sans-serif;
+  font-weight: 700;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+
+.custom-check input[type="checkbox"]:checked + label {
+  color: #E80000;
+}
+
+.form-radio-input{
+  display: none;
+}
+
+.form-radio-label{
+  display: inline-block;
+  padding: 0px 0px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 700;
+  user-select: none;
+  transition: all 0.2s;
+  font-family:"Jura",sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #282828;
+}
+
+
+ input[type="radio"]:checked + label {
+  color: #E80000;
+}
+
+.form-select {
+    margin-block: 0px;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    background-color: transparent;
+    font-family: "Jura", sans-serif;
+    border: 1px solid transparent;
+    background-image: none;
+}
+
+
+.form-select option{
+  font-size: 1.3rem;
+}
+
+.form-select:focus{
+  outline: none;
+  box-shadow: none;
+  border-color: #282828;
+}
+
+
+.servicetype h3{
+font-family:"Jura",sans-serif;
+font-weight: 700;
+letter-spacing: -0.05em;
+color: #282828;
+font-size: 1.3rem;
+}
+
+
+
+.othersevice .option-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+}
+
+
+
+.othersevice input[type="radio"] {
+  display: none;
+}
+
+
+.othersevice label {
+    display: inline-block;
+    padding: 3px 23px;
+    margin-right: 10px;
+    margin-block: 5px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: #000000;
+    transition: 0.3s ease;
+    font-family:"Jura",sans-serif;
+    font-weight: 700;
+}
+
+
+.othersevice input[type="radio"]:checked + label {
+  background-color:  #E80000;
+  color: white;
+}
+
+
+
+.othersevice  h3{
+font-family:"Jura",sans-serif;
+font-weight: 700;
+letter-spacing: -0.05em;
+color: #282828;
+font-size: 1.7rem;
+padding-bottom: 5px;
+}
+
+
+.opnclesr input[type="radio"]:checked + label {
+border-bottom: 2px solid  #E80000 !important;
+background-color:  transparent;
+color: #000000;
+border-radius: 0px;
+}
+
+
+.othersevice input[type="text"]{
+font-size: 1.5rem;
+font-weight: 700;
+font-family:"Jura",sans-serif;
+letter-spacing: -0.05em;
+color: #787878;
+background-color: transparent;
+border: none;
+border-bottom: 1px solid #000;
+padding: 2px 5px;
+width: 100%;
+margin-top: 20px;
+
+}
+
+
+.othersevice {
+  margin-top: 15px;
+}
+
+
+.servicechose{
+  margin-block: 0px;
+  margin-bottom: 20px;
+}
+
+
+.upload-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: border 0.3s;
+}
+
+
+.upload-icon {
+background-color: #E80000;
+color: white;
+font-size: 5rem;
+width: 70px;
+height: 70px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+.upload-text h2 {
+font-weight: 700;
+letter-spacing: -0.05em;
+color: #282828;
+font-size: 2rem;
+font-family:"Jura",sans-serif;
+}
+
+
+
+.upload-box  .upload-text small{
+  font-size: 1rem;
+  font-family: 'Poppins';
+  font-weight: 700;
+  color: #8D8D8D;
+  line-height: 1;
+  font-family:"Jura",sans-serif;
+}
+
+
+.warranty-card  .form-group {
+margin-bottom: 10px;
+margin-top: 30px;   
+}
+
+
+.warranty-card  .form-group label {
+display: block;
+margin-bottom: 10px;
+font-weight: 700;
+font-size: 1.8rem; 
+letter-spacing: -0.05em;
+color: #282828;
+font-family:"Jura",sans-serif;
+line-height: 1;
+text-align: center;
+}
+
+
+.warranty-card  .form-group input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #282828;
+  padding: 8px 0;
+  font-size: 1.5rem;
+  background: transparent;
+  outline: none;
+  margin-top: 20px;
+}
+
+
+.warranty-card  .checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+
+.warranty-card  .checkbox-wrap input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+}
+
+
+.warranty-card .agree{
+font-size: 1.1rem;
+line-height: 1;
+color: #8D8D8D;
+}
+
+
+
+.warranty-card  .submit-btn {
+background-color: #E80000;
+color: white;
+padding: 5px 50px;
+border: none;
+font-family:"Jura",sans-serif;
+width: 70%;
+margin: 0px auto;
+font-weight: 700;
+border-radius: 6px;
+font-size: 1.3rem;
+cursor: pointer;
+}
+
+
+.grfindetail{
+  font-size: 5rem;
+}
+
+
+.windowfilm{
+  font-size: 4.5rem;
+}
+
+
+ .desktop{
+  display: block;
+ }
+
+
+ .mobile{
+  display: none;
+ }
+
+
+.openard {
+   width: 425px;
+   height: 300px;
+   display: block;
+}
+
+
+.formInputs {
+opacity: 0;
+transform: translateY(90px);
+max-height: 0;
+overflow: hidden;
+transition: all 0.9s ease;
+}
+
+
+.formInputs.show {
+opacity: 1;
+transform: translateY(-180px);
+max-height: max-content;
+}
+
+
+.card-title-open.fadeOut {
+opacity: 0;
+transform: translateY(-50px);
+transition: all 0.6s ease;
+pointer-events: none;
+}
+
+
+.card-content {
+cursor: pointer;
+}
+
+.form-check{
+padding-left: 0px;
+}
+
+.servicebox{
+position: relative;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-in-right.show {
+opacity: 1;
+transform: translateX(0);
+}
+/* keep the service area & steps same size so content doesn't jump */
+.newcode, .options-container {
+  min-height: 150px; /* adjust height as needed */
+}
+
+/* disabled look for next */
+.btn-next.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* hide prev initially by visibility (we control it via JS) */
+.btn-back { cursor: pointer; }
+
+
+  .step { display: none; }
+  .step.active { display: block; }
+  .step h5 { margin-bottom: 15px; 
+font-family:"Jura",sans-serif;
+font-weight: 700;
+font-size: 1.5rem;
+text-align: center;
+padding-bottom: 10px;
+  }
+  .step h5 span{
+    border-bottom: 2px solid #E80000;
+  }
+
+    .step {
+      display: none;
+      opacity: 0;
+      transform: translatey(40px);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .step.active {
+      display: block;
+      opacity: 1;
+      transform: translatey(0);
+      /* position: absolute; */
+    }
+
+    /* Animation helpers */
+    .next-enter {
+      opacity: 0;
+      transform: translatey(40px);
+    }
+
+    .prev-enter {
+      opacity: 0;
+      transform: translatey (-40px);
+    }
+.newcode{
+    position: relative;
+}
+
+.nextbtn{
+  font-size: 1.2rem;
+  font-family:"Jura",sans-serif;
+font-weight: 700;
+color: #E80000;
+text-transform: uppercase;
+}
+.prevbtn{
+    font-size: 1.2rem;
+  font-family:"Jura",sans-serif;
+font-weight: 700;
+color: #E80000;
+text-transform: uppercase;
+
+}
+
+        
+
+.rowwww{
+  height: 150px;
+}
+
+.card-contentss{
+  padding: 60px 100px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+.card-contentss p{
+font-size: 2rem;
+color: #fff;
+width: 90%;
+padding-bottom: 50px;
+position: relative;
+}
+
+.card-contentss h1{
+font-size: 4.5rem;
+font-weight: 700;
+letter-spacing: -0.05em;
+color: #FFFFFF;
+padding-bottom: 0px;
+margin-bottom: 0px;
+}
+
+.svg-cardss{
+width: 100%; 
+}
+
+.crosebtn{
+position: absolute;
+top: 3%;
+left: 4%;
+--bs-btn-close-opacity: 1 !important;
+}
+
+
+.modal-body{
+  background-color:#F1F1F1;
+}
+
+.servicetype input[type="checkbox"]:checked + label {
+   color: #E80000;
+}
+
+
+@media (max-width: 991.98px) {
+  .openard {
+    width: 700px;
+    height: 500px;
+    display: block;
+}
+
+.colmenblock{
+  margin-top: 50px;
+}
+.open-layout .section-label {
+    position: absolute;
+    top: -3%;
+    left: 53%;
+    font-size: 1.4rem;
+}
+
+.warranty-card .form-group label {
+margin-bottom: 10px;
+        font-size: 3rem;
+        margin-top: 0px;
+}
+ 
+ 
+.warranty-card  .form-group input {
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+}
+.warranty-card .agree {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #8D8D8D;
+}
+#mainForm{
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+.warranty-card  .submit-btn {
+    font-size: 2rem;
+}
+
+
+}
+
+@media (max-width:500px) {
+ 
+
+.warranty-card  .form-group label {
+    margin-bottom: 10px;
+    font-size: 1.7rem;
+    margin-top: 10px;
+}
+.warranty-card .agree {
+    font-size: 0.8rem;
+    line-height: 1;
+    color: #8D8D8D;
+}
+.warranty-card  .checkbox-wrap {
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.card-content-red p {
+    font-size: 5rem;
+    margin-bottom: 0;
+    font-family: "Jura",sans-serif;
+    font-weight: 700;
+    /* letter-spacing: -0.1em; */
+    color: #EBEBEB;
+    padding-top: 30px;
+    cursor: pointer;
+}
+.openard {
+    width: 425px;
+    height: 300px;
+    display: block;
+}
+.warranty-card  .submit-btn {
+    font-size: 1.3rem;
+}
+.warranty-card .form-group input {
+        font-size: 1.5rem;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    
+}
+.colmenblock {
+    margin-top: 0px;
+}
+#mainForm{
+  padding-bottom: 50px;
+}
+}
+
+
+/* .swal2-validation-message button{
+  background-color: #E80000 !important;
+} */
+
+
+</style>
+</head>
+ 
+
+
+
+<form id="mainForm">
+  <div class="container-fluid">
+    <div class="row gx-0 gy-0">
+
+      <!-- Card 1 -->
+     <div class="col-lg-4  ">
+     <div class="p-3  ">
+<svg class="svg-card" viewBox="0 0 1651 927" xmlns="http://www.w3.org/2000/svg">
+  <!-- Red custom shape -->
+  <path d="M201.437 36.5029C219.897 13.5247 247.782 0.157959 277.257 0.157959H1578.97C1618.46 0.157959 1650.48 32.175 1650.48 71.6699V778.063C1650.48 817.699 1618.24 849.775 1578.61 849.574L995.897 846.619C975.11 846.513 955.306 855.458 941.642 871.123L906.307 911.633C898.159 920.975 886.369 926.336 873.972 926.336H71.6507C32.1557 926.336 0.138672 894.319 0.138672 854.824V312.238C0.138672 295.949 5.69944 280.148 15.901 267.45L201.437 36.5029Z"
+        fill="#E80000"/>
+  <!-- HTML content inside the shape -->
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="card-content-red">
+      <h1>WARRANTY<br/>CARD</h1>
+      <p id="getStartedBtn">GET STARTED</p>
+      <!-- <p id="getStartedBtn">GET STARTED</p> -->
+      <img src="./gamp-logo.png" alt="" class="logo" width="30%" >
+  <img src="./connerparts.png" alt=""  width="12%" class="connerside">
+
+    </div>
+  </foreignObject>
+</svg>
+
+     </div>
+    </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 colmenblock">
+        <div class="p-3 card-wrapper">
+          <svg class="openard img-fluid" viewBox="0 0 425 333" preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.6895 1.23584H187.2C191.912 1.23584 196.518 2.63689 200.432 5.26025L227.572 23.4526C231.887 26.345 236.965 27.8891 242.16 27.8892H325.732C329.932 27.8891 334.057 26.7754 337.687 24.6626L372.392 4.46143C376.021 2.3486 380.147 1.23584 384.347 1.23584H400.48C413.604 1.23604 424.243 11.8755 424.243 24.9995V308.457C424.243 321.58 413.604 332.219 400.48 332.219H24.6895C11.5654 332.219 0.92588 321.581 0.925781 308.457V24.9995C0.925781 11.8754 11.5653 1.23584 24.6895 1.23584Z"
+              stroke="#999999" stroke-width="1.21863" fill="none" />
+            <foreignObject x="0" y="0" width="100%" height="100%">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="card-content">
+                                <div class="open-layout">
+                  <div class="section-label">Warranty</div>
+                  <div class="step-count">1/3</div>
+
+                  <!-- Clickable Heading -->
+                  <div class="card-title-open"><span>PERSONAL [DETAILS]</span></div>
+
+                  <!-- Form inputs hidden by default -->
+                  <div class="row g-0 rowddd formInputs ">
+                    <div class="col-md-12"><input type="text" class="form-control" name="name" placeholder="[Full Name]" required></div>
+                    <div class="col-md-12"><input type="number" class="form-control" name="phone" placeholder="[Phone No.]" required></div>
+                    <div class="col-md-12"><input type="email" class="form-control" name="email" placeholder="[Email]" required></div>
+                  </div>
+
+                </div>
+
+              </div>
+            </foreignObject>
+          </svg>
+        </div>
+      </div>
+       <div class="col-lg-4 colmenblock">
+        <div class="p-3 card-wrapper ">
+          <svg class="openard img-fluid" viewBox="0 0 425 333" preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.6895 1.23584H187.2C191.912 1.23584 196.518 2.63689 200.432 5.26025L227.572 23.4526C231.887 26.345 236.965 27.8891 242.16 27.8892H325.732C329.932 27.8891 334.057 26.7754 337.687 24.6626L372.392 4.46143C376.021 2.3486 380.147 1.23584 384.347 1.23584H400.48C413.604 1.23604 424.243 11.8755 424.243 24.9995V308.457C424.243 321.58 413.604 332.219 400.48 332.219H24.6895C11.5654 332.219 0.92588 321.581 0.925781 308.457V24.9995C0.925781 11.8754 11.5653 1.23584 24.6895 1.23584Z"
+              stroke="#999999" stroke-width="1.21863" fill="none" />
+            <foreignObject x="0" y="0" width="100%" height="100%">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="card-content">
+                <div class="open-layout">
+                  <div class="section-label">Warranty</div>
+                  <div class="step-count">2/3</div>
+
+                  <!-- Clickable Heading -->
+<div class="card-title-open">CAR<span class="d-block"> [DETAILS]</span></div>
+
+                  <!-- Form inputs hidden by default -->
+<div class="row gx-3 gy-3 rowddd formInputs">
+  <div class="col-md-5  col-6">
+    <input type="text" class="form-control" name="vehicleNo"  placeholder="[Vehicle No.]" required>
+  </div>
+  <div class="col-md-4 col-6">
+    <input type="text" class="form-control" name="color" placeholder="[Color]" required>
+  </div>
+  <div class="col-md-3  col-6">
+    <input type="text" class="form-control" name="year" placeholder="[Year]" required>
+  </div>
+
+
+  <div class="col-md-6  col-6">
+ <select id="Brand" name="brand" class="form-select Brand"  required>
+  <option value="" disabled selected>[Brand]</option>
+  <option value="Audi">Audi</option>
+  <option value="BMW">BMW</option>
+  <option value="BYD">BYD</option>
+  <option value="Chevrolet">Chevrolet</option>
+  <option value="Citroen">Citroen</option>
+  <option value="Datsun">Datsun</option>
+  <option value="Ford">Ford</option>
+  <option value="Hyundai">Hyundai</option>
+  <option value="Isuzu">Isuzu</option>
+  <option value="Jaguar">Jaguar</option>
+  <option value="Kia">Kia</option>
+  <option value="Land Rover">Land Rover</option>
+  <option value="Lexus">Lexus</option>
+  <option value="Mahindra">Mahindra</option>
+  <option value="Maruti Suzuki">Maruti Suzuki</option>
+  <option value="MG Motors">MG Motors</option>
+  <option value="Mercedes-Benz">Mercedes-Benz</option>
+  <option value="Mini Cooper">Mini Cooper</option>
+  <option value="Nissan">Nissan</option>
+  <option value="Porsche">Porsche</option>
+  <option value="Renault">Renault</option>
+  <option value="Skoda">Skoda</option>
+  <option value="Tata">Tata</option>
+  <option value="Toyota">Toyota</option>
+  <option value="Volkswagen">Volkswagen</option>
+  <option value="Volvo">Volvo</option>
+</select>
+  </div>
+  <div class="col-md-6  col-6">
+  <select id="Model" class="form-select Model"  name="model" required>
+                      <option value="" selected>[Model]</option>
+                    </select>
+  </div>
+    <div class=" col-6">
+    <input type="text" class="form-control" placeholder="[Location]" required name="store">
+  </div>
+
+   <div
+                    class="col-6"
+                    id="otherModelContainer"
+                    style="display: none">
+                    <input
+                      type="text"
+                      id="OtherModel" 
+                       name="OtherModel"
+                      class="form-control custom-input"
+                      placeholder="Enter model"/>
+                  </div> 
+                  </div>
+
+                </div>
+
+
+              </div>
+            </foreignObject>
+          </svg>
+        </div>
+      </div>
+           <div class="col-lg-4  colmenblock">
+        <div class="p-3 card-wrapper  servicebox">
+          <svg class="openard img-fluid" viewBox="0 0 425 333" preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.6895 1.23584H187.2C191.912 1.23584 196.518 2.63689 200.432 5.26025L227.572 23.4526C231.887 26.345 236.965 27.8891 242.16 27.8892H325.732C329.932 27.8891 334.057 26.7754 337.687 24.6626L372.392 4.46143C376.021 2.3486 380.147 1.23584 384.347 1.23584H400.48C413.604 1.23604 424.243 11.8755 424.243 24.9995V308.457C424.243 321.58 413.604 332.219 400.48 332.219H24.6895C11.5654 332.219 0.92588 321.581 0.925781 308.457V24.9995C0.925781 11.8754 11.5653 1.23584 24.6895 1.23584Z"
+              stroke="#999999" stroke-width="1.21863" fill="none" />
+            <foreignObject x="0" y="0" width="100%" height="100%">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="card-content lastservice">
+                <div class="open-layout">
+                  <div class="section-label">Warranty</div>
+                     
+                  <div class="step-count">3/3</div>
+
+                  <!-- Clickable Heading -->
+                  <div class="card-title-open"> ppf service<span class="d-block"> [DETAILS]</span></div>
+
+                  <!-- Form inputs hidden by default -->
+   <div class="rowddd formInputs  ">
+    <div class="row gx-0   servicetype">
+  <div class="col-12">
+<h3>PPF Types</h3>
+  </div>
+<div class="col-12">
+<div class="row g-0 aling-items-center">
+  <div class="col-md-3 col-2">
+            <input type="radio" id="gloss" name="finish" value="Gloss" class="form-radio-input">
+            <label for="gloss" class="form-radio-label">[Gloss]</label>
+  </div>
+    <div class="col-md-3 col-2">
+      <input type="radio" id="matte" name="finish" value="Matte" class="form-radio-input">
+            <label for="matte" class="form-radio-label">[Matte]</label>
+  </div>
+    <div class="col-md-3 col-3">
+        <input type="radio" id="colored" name="finish" value="Colored" class="form-radio-input">
+            <label for="colored" class="form-radio-label">[Colored]</label>
+  </div>
+    <div class="col-md-3 col-3 ">
+  <input type="checkbox" id="sunroof" name="sunroof" value="Sunroof" class="form-radio-input">
+        <label for="sunroof" class="form-radio-label">[Sunroof]</label>
+  </div>
+
+</div>
+</div>
+</div> 
+    <div class="row g-0 align-items-center mt-3">
+                <div class="col-6">
+                  <select id="Warranty" class="form-select" name="warranty" required>
+                    <option value="" selected>[Warranty]</option>
+                    <option value="3 Years">3 Years</option>
+                    <option value="7 Years">7 Years</option>
+                  </select>
+                </div>
+
+                <div class="col-6">
+                  <select id="series" class="form-select" name="series" required>
+                    <option value="" selected>[Series]</option>
+                    <option value="Clear6000">Clear 6000</option>
+                    <option value="Clear10000">Clear 10-000</option>
+                  </select>
+                </div>
+
+                <div class="col-7 mt-2">
+                  <input type="text" id="uinRoll" class="form-control" placeholder="[UIN] & [ROLL NO]" name="uin" required>
+                </div>
+
+                <div class="col-5 mt-2">
+                  <select id="coverage" class="form-select" name="coverage" required>
+                    <option value="" selected>[Coverage]</option>
+                    <option value="Full">Full</option>
+                    <option value="Partial">Partial</option>
+                  </select>
+                </div>
+                 
+              </div>
+                <div
+                    class="col-12"
+                    id="otherpatsContainer"
+                    style="display: none">
+                    <input
+                      type="text"
+                      id="parts" 
+                       name="parts"
+                      class="form-control custom-input "
+                      placeholder="Enter parts"/>
+                  </div>
+<div>
+</div>
+                   </div>
+                </div>
+              </div>
+            </foreignObject>
+          </svg>
+        </div>
+      </div>
+             <div class="col-lg-4 colmenblock">
+        <div class="p-3 card-wrapper ">
+          <svg class="openard img-fluid" viewBox="0 0 425 333" preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.6895 1.23584H187.2C191.912 1.23584 196.518 2.63689 200.432 5.26025L227.572 23.4526C231.887 26.345 236.965 27.8891 242.16 27.8892H325.732C329.932 27.8891 334.057 26.7754 337.687 24.6626L372.392 4.46143C376.021 2.3486 380.147 1.23584 384.347 1.23584H400.48C413.604 1.23604 424.243 11.8755 424.243 24.9995V308.457C424.243 321.58 413.604 332.219 400.48 332.219H24.6895C11.5654 332.219 0.92588 321.581 0.925781 308.457V24.9995C0.925781 11.8754 11.5653 1.23584 24.6895 1.23584Z"
+              stroke="#999999" stroke-width="1.21863" fill="none" />
+            <foreignObject x="0" y="0" width="100%" height="100%">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="card-content">
+                <div class="open-layout warranty-card">
+                  <div class="section-label">Warranty</div>
+                  
+                  <div class="mt-5"><label class="upload-box" for="uplodefile">
+  <div class="upload-icon">+ </div>
+  <div class="upload-text">
+    <h2 id="uploadTitle">Upload picture</h2>
+    <div class="d-flex align-items-center gap-2">
+      <img src="" alt="" height="40px" width="50px" id="previewImg" style="display:none; object-fit:cover; border:1px solid #ccc;">
+ <small id="fileNameDisplay">Upload 1 supported file: JPG, <span class="d-block">JPEG, or PNG. Max 10 KB</span> </small>
+    </div>
+   
+  </div>
+  <input type="file" class="file-input d-none" accept=".jpg,.png,.jpeg " id="uplodefile" required name="file">
+</label></div>
+
+ 
+
+                </div>
+
+
+              </div>
+            </foreignObject>
+          </svg>
+        </div>
+      </div>
+             <div class="col-lg-4 warranty-card px-5 colmenblock ">
+
+    <div class="row   card-wrapper">
+      <!-- Left Section -->
+       
+
+        <!-- Amount Paid Input -->
+        <div class="form-group">
+          <label>Total Amount Paid</label>
+          <input type="text" placeholder=" " required name="totalAmount">
+        </div>
+
+        <!-- Checkbox -->
+        <div class="checkbox-wrap ">
+          <input type="checkbox" id="agree" required>
+          <label for="agree" class="agree">I agree that all the details shared in the field above</label>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submit-btn" type="submit">Submit</button>
+
+  </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+    
+      <div class="modal-body">
+   <svg class="svg-cardss" viewBox="0 0 1084 740"  xmlns="http://www.w3.org/2000/svg">
+
+<path d="M33.1191 2.51611H599.64C606.431 2.51611 613.037 4.72767 618.461 8.81494L735.423 96.9614L842.111 182.035C847.941 186.684 855.178 189.214 862.635 189.214H1050.88C1068.15 189.214 1082.15 203.216 1082.15 220.487V706.247C1082.15 723.517 1068.15 737.518 1050.88 737.518H33.1191C15.8482 737.518 1.84691 723.517 1.84668 706.247V33.7886C1.84669 16.5175 15.8481 2.51611 33.1191 2.51611Z" fill="#282828" stroke="#282828" stroke-width="3.2918"/>
+
+
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="card-contentss">
+        <button type="button" class="btn-close  crosebtn" data-bs-dismiss="modal" aria-label="Close">
+          <svg width="50" height="63" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.9668 23L15 13.5732L5.03322 23H0L12.5083 11.2085L0.64784 0H5.68106L15 8.81127L24.3189 0H29.3522L17.4917 11.2085L30 23H24.9668Z" fill="white"/>
+</svg>
+
+        </button>
+
+      <div>
+                    <p id="thanks">We truly appreciate your trust in our products and services. Your satisfaction is our priority, and this warranty is our commitment to stand by you every step of the way.</p>
+      </div>
+      <div class="row gx-5  align-items-end ">
+    <div class="col-7">
+     <div class="p-3  ">
+
+      <h1>[ THANKYOU ]</h1></div>
+    </div>
+    <div class="col-5">
+      <div class="p-3  text-end">
+      <img src="./gamp-logo.png" alt="" class=" img-fulid" width="100%" >
+      </div>
+    </div>
+  </div>
+    </div>
+  </foreignObject>
+</svg> 
+      </div>
+     
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="./newone.js"></script>
+<script>
+  flatpickr("#serviceDate", {
+  dateFormat: "d-m-Y", 
+  allowInput: true,
+  disableMobile: true
+});
+</script>
+
+
+<script>
+   const coverageSelect = document.getElementById("coverage");
+  const otherPartsContainer = document.getElementById("otherpatsContainer");
+  const partsInput = document.getElementById("parts");
+
+  coverageSelect.addEventListener("change", function () {
+    if (coverageSelect.value === "Partial") {
+      otherPartsContainer.style.display = "block";
+      partsInput.required = true;  // Make input required if "Other" is selected
+      partsInput.focus();
+    } else {
+      otherPartsContainer.style.display = "none";
+      partsInput.value = "";       // Clear input
+      partsInput.required = false;
+    }
+  })
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const finishes = document.querySelectorAll('input[name="finish"]');
+  const sunroof = document.getElementById("sunroof");
+
+  // Ensure only one finish is active at a time
+  finishes.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      // When a finish changes, sunroof remains as it is (optional)
+      // So no reset needed for sunroof
+    });
+  });
+
+  // Sunroof is independent — can toggle anytime
+  sunroof.addEventListener("change", () => {
+    if (sunroof.checked) {
+      console.log("Sunroof selected with:", document.querySelector('input[name="finish"]:checked')?.value);
+    } else {
+      console.log("Sunroof deselected");
+    }
+  });
+});
+
+</script>
+<!-- <script>
+ 
+const storeList = [
+  "Agra",
+  "Ahmedabad",
+  "Aligarh",
+  "Ambience Mall",
+  "Bengaluru",
+  "Dimapur",
+  "Indore",
+  "Jaipur",
+  "Janakpuri",
+  "Lucknow",
+  "Mohali",
+  "Nagpur",
+  "Noida",
+  "Pacific Mall ,Subhash Nagar",
+  "Promenade Mall",
+  "Rudrapur",
+  "Surat",
+  "Udaipur",
+  "Vadodara"
+];
+
+// Sort alphabetically
+storeList.sort();
+
+const storeSelect = document.getElementById("Store");
+const otherStoreContainer = document.getElementById("otherStoreContainer");
+
+// Populate store dropdown
+storeList.forEach(store => {
+  const option = document.createElement("option");
+  option.value = store;
+  option.textContent = store;
+  storeSelect.appendChild(option);
+});
+
+// Add "Other" option
+const otherOption = document.createElement("option");
+otherOption.value = "Other";
+otherOption.textContent = "Other";
+storeSelect.appendChild(otherOption);
+
+// Show input if "Other" selected
+storeSelect.addEventListener("change", function() {
+  if (this.value === "Other") {
+    otherStoreContainer.style.display = "block";
+  } else {
+    otherStoreContainer.style.display = "none";
+  }
+});
+</script> -->
+
+  <script>
+ document.addEventListener('DOMContentLoaded', () => {
+  const fileInput = document.getElementById('uplodefile');
+  const uploadTitle = document.getElementById('uploadTitle');
+  const fileNameDisplay = document.getElementById('fileNameDisplay');
+  const previewImg = document.getElementById('previewImg');
+
+  fileInput.addEventListener('change', function() {
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      uploadTitle.textContent = "Uploaded picture";
+      fileNameDisplay.textContent = file.name;
+
+      // Image preview
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        previewImg.src = e.target.result;
+        previewImg.style.display = "block";
+      }
+      reader.readAsDataURL(file);
+
+    } else {
+      // Agar user file hata de
+      uploadTitle.textContent = "Upload picture";
+      fileNameDisplay.innerHTML = 'Upload 1 supported file: JPG, <span class="d-block">JPEG, or PNG. Max 10 KB</span>';
+      previewImg.style.display = "none";
+      previewImg.src = "";
+    }
+  });
+});
+
+  </script>
+ <script>
+  const cards = document.querySelectorAll(".card-wrapper");
+
+// Initially disable all cards
+cards.forEach(card => {
+  card.style.pointerEvents = "none";
+  card.style.opacity = "0.4";
+});
+
+// Step tracking
+let currentStep = -1; // no step active at start
+
+// Function to enable a card
+function enableCard(index) {
+  if (index < cards.length) {
+    cards[index].style.pointerEvents = "auto";
+    cards[index].style.opacity = "1";
+    currentStep = index;
+
+    // Attach validation listener to required inputs (visible only)
+    const inputs = cards[index].querySelectorAll("input[required], select[required], textarea[required]");
+    inputs.forEach(inp => {
+      inp.addEventListener("input", () => checkAndEnableNext(index));
+    });
+  }
+}
+
+document.querySelectorAll(".servicebox input, .servicebox select").forEach(el => {
+  el.addEventListener("change", () => {
+    if (allPPFFieldsFilled()) {
+      const uploadCard = cards[1];
+      uploadCard.style.pointerEvents = "auto";
+      uploadCard.style.opacity = "1";
+    }
+  });
+});
+// Function to check if current card is fully filled & unlock next
+function checkAndEnableNext(index) {
+  const currentCard = cards[index];
+  
+  // Only check required inputs that are currently visible
+  const inputs = Array.from(currentCard.querySelectorAll("input[required], select[required], textarea[required]"))
+                      .filter(inp => inp.offsetParent !== null);
+
+  // Check if all visible required fields are filled
+  const allFilled = inputs.every(inp => inp.value.trim() !== "");
+
+  if (allFilled && index + 1 < cards.length) {
+    enableCard(index + 1);
+
+    // Smooth scroll to the next card
+    cards[index + 1].scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+
+// "Get Started" button → enable 1st block and scroll
+document.getElementById("getStartedBtn").addEventListener("click", () => {
+  enableCard(0);
+  cards[0].scrollIntoView({ behavior: "smooth" });
+});
+
+</script> 
+</body>
+</html>
+
+
