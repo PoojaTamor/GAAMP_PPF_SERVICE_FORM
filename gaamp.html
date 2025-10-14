@@ -733,12 +733,19 @@ margin-bottom: 10px;
 #mainForm{
   padding-bottom: 50px;
 }
+.mating{
+  margin-left: 20px !important;
+  margin-right: 10px !important;
 }
-
+}
+/* .cardlist{
+  border: 1px solid #000;
+} */
 
 /* .swal2-validation-message button{
   background-color: #E80000 !important;
 } */
+
 
 
 </style>
@@ -785,8 +792,12 @@ margin-bottom: 10px;
               <div xmlns="http://www.w3.org/1999/xhtml" class="card-content">
                                 <div class="open-layout">
                   <div class="section-label">Warranty</div>
-                  <div class="step-count">1/3</div>
-
+                <div class="d-flex  justify-content-between align-items-center">
+                    <div class="step-count">1/3</div>
+                  <div class="next-btn"><img src="./Arrow 7.svg" alt="next" ></div>
+                </div>
+<div class="cardlist">
+  
                   <!-- Clickable Heading -->
                   <div class="card-title-open"><span>PERSONAL [DETAILS]</span></div>
 
@@ -796,6 +807,7 @@ margin-bottom: 10px;
                     <div class="col-md-12"><input type="number" class="form-control" name="phone" placeholder="[Phone No.]" required></div>
                     <div class="col-md-12"><input type="email" class="form-control" name="email" placeholder="[Email]" required></div>
                   </div>
+</div>
 
                 </div>
 
@@ -814,7 +826,11 @@ margin-bottom: 10px;
               <div xmlns="http://www.w3.org/1999/xhtml" class="card-content">
                 <div class="open-layout">
                   <div class="section-label">Warranty</div>
-                  <div class="step-count">2/3</div>
+                <div class="d-flex  justify-content-between align-items-center">
+                    <div class="step-count">2/3</div>
+                  <div class="next-btn"><img src="./Arrow 7.svg" alt="next" ></div>
+                </div>
+<div class="cardlist">
 
                   <!-- Clickable Heading -->
 <div class="card-title-open">CAR<span class="d-block"> [DETAILS]</span></div>
@@ -884,10 +900,8 @@ margin-bottom: 10px;
                       placeholder="Enter model"/>
                   </div> 
                   </div>
-
+                  </div>
                 </div>
-
-
               </div>
             </foreignObject>
           </svg>
@@ -904,8 +918,11 @@ margin-bottom: 10px;
                 <div class="open-layout">
                   <div class="section-label">Warranty</div>
                      
-                  <div class="step-count">3/3</div>
-
+              <div class="d-flex  justify-content-between align-items-center">
+                    <div class="step-count">3/3</div>
+                  <div class="next-btn"><img src="./Arrow 7.svg" alt="next" ></div>
+                </div>
+<div class="cardlist">
                   <!-- Clickable Heading -->
                   <div class="card-title-open"> ppf service<span class="d-block"> [DETAILS]</span></div>
 
@@ -916,17 +933,17 @@ margin-bottom: 10px;
 <h3>PPF Types</h3>
   </div>
 <div class="col-12">
-<div class="row g-0 aling-items-center">
+<div class="row gx-md-0 gx-5 aling-items-center">
   <div class="col-md-3 col-2">
             <input type="radio" id="gloss" name="finish" value="Gloss" class="form-radio-input">
             <label for="gloss" class="form-radio-label">[Gloss]</label>
   </div>
-    <div class="col-md-3 col-2">
-      <input type="radio" id="matte" name="finish" value="Matte" class="form-radio-input">
+    <div class="col-md-3 col-2 mating">
+      <input type="radio" id="matte" name="finish" value="Matte" class="form-radio-input ">
             <label for="matte" class="form-radio-label">[Matte]</label>
   </div>
-    <div class="col-md-3 col-3">
-        <input type="radio" id="colored" name="finish" value="Colored" class="form-radio-input">
+    <div class="col-md-3 col-3 ">
+        <input type="radio" id="colored" name="finish" value="Colored" class="form-radio-input ">
             <label for="colored" class="form-radio-label">[Colored]</label>
   </div>
     <div class="col-md-3 col-3 ">
@@ -981,6 +998,7 @@ margin-bottom: 10px;
 <div>
 </div>
                    </div>
+                   </div>
                 </div>
               </div>
             </foreignObject>
@@ -997,6 +1015,7 @@ margin-bottom: 10px;
               <div xmlns="http://www.w3.org/1999/xhtml" class="card-content">
                 <div class="open-layout warranty-card">
                   <div class="section-label">Warranty</div>
+                   <div class="text-end mt-3 next-btn" ><img src="./Arrow 7.svg" alt="next" ></div>
                   
                   <div class="mt-5"><label class="upload-box" for="uplodefile">
   <div class="upload-icon">+ </div>
@@ -1010,9 +1029,6 @@ margin-bottom: 10px;
   </div>
   <input type="file" class="file-input d-none" accept=".jpg,.png,.jpeg " id="uplodefile" required name="file">
 </label></div>
-
- 
-
                 </div>
 
 
@@ -1047,12 +1063,7 @@ margin-bottom: 10px;
     </div>
   </div>
 </form>
-
-
-
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1075,7 +1086,7 @@ margin-bottom: 10px;
         </button>
 
       <div>
-                    <p id="thanks">We truly appreciate your trust in our products and services. Your satisfaction is our priority, and this warranty is our commitment to stand by you every step of the way.</p>
+    <p id="thanks">We truly appreciate your trust in our products and services. Your satisfaction is our priority, and this warranty is our commitment to stand by you every step of the way.</p>
       </div>
       <div class="row gx-5  align-items-end ">
     <div class="col-7">
@@ -1111,7 +1122,6 @@ margin-bottom: 10px;
 });
 </script>
 
-
 <script>
    const coverageSelect = document.getElementById("coverage");
   const otherPartsContainer = document.getElementById("otherpatsContainer");
@@ -1129,6 +1139,7 @@ margin-bottom: 10px;
     }
   })
 </script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
   const finishes = document.querySelectorAll('input[name="finish"]');
@@ -1239,7 +1250,7 @@ storeSelect.addEventListener("change", function() {
 });
 
   </script>
- <script>
+ <!-- <script>
   const cards = document.querySelectorAll(".card-wrapper");
 
 // Initially disable all cards
@@ -1301,7 +1312,60 @@ document.getElementById("getStartedBtn").addEventListener("click", () => {
   cards[0].scrollIntoView({ behavior: "smooth" });
 });
 
-</script> 
+</script>  -->
+
+<!-- <script>
+  const cards = document.querySelectorAll(".card-wrapper");
+  let currentStep = -1;
+
+  // Initially disable all cards
+  cards.forEach(card => {
+    card.style.pointerEvents = "none";
+    card.style.opacity = "0.4";
+  });
+
+  // Enable a specific card
+  function enableCard(index) {
+    if (index < cards.length) {
+      cards[index].style.pointerEvents = "auto";
+      cards[index].style.opacity = "1";
+      currentStep = index;
+    }
+  }
+
+  // Check if all required fields in a given card are filled
+  function allRequiredFilled(card) {
+    const inputs = Array.from(card.querySelectorAll("input[required], select[required], textarea[required]"))
+      .filter(inp => inp.offsetParent !== null); // visible ones only
+    return inputs.every(inp => inp.value.trim() !== "");
+  }
+
+  // Handle "Next" button click
+  document.querySelectorAll(".next-btn").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      const currentCard = cards[index];
+      if (allRequiredFilled(currentCard)) {
+        // Unlock next card
+        if (index + 1 < cards.length) {
+          enableCard(index + 1);
+          // Scroll only when user clicks next
+          cards[index + 1].scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        alert("Please fill all required fields before continuing.");
+      }
+    });
+  });
+
+  // "Get Started" button → enable first block
+  document.getElementById("getStartedBtn").addEventListener("click", () => {
+    enableCard(0);
+    cards[0].scrollIntoView({ behavior: "smooth" });
+  });
+</script> -->
+
+
+
 </body>
 </html>
 
