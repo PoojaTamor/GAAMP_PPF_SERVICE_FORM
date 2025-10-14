@@ -2,7 +2,7 @@
     
 
   // Select all card-contents
-  document.querySelectorAll(".card-content").forEach(card => {
+  document.querySelectorAll(".cardlist").forEach(card => {
     const heading = card.querySelector(".card-title-open");
     const fields = card.querySelector(".formInputs");
 
@@ -164,35 +164,22 @@ document.getElementById("mainForm").addEventListener("submit", function(e) {
   const form = e.target;
   const submitBtn = document.querySelector(".submit-btn");
   console.log(submitBtn)
-
   const formData = new FormData(form);
+// ✅ Handle coverage
+      let coverageValue = coverageSelect.value;
+      if (coverageValue === "Partial" && partsInput.value.trim() !== "") {
+        coverageValue = partsInput.value.trim();
+      }
+      formData.set("coverage", coverageValue);
 
+      // ✅ Handle model properly
+      let modelValue = modelSelect.value;
+      if (modelValue === "Other" && otherModelInput.value.trim() !== "") {
+        modelValue = otherModelInput.value.trim();
+      }
+      formData.set("model", modelValue); // 🔥 This overwrites “Other” with actual text
+      formData.delete("OtherModel"); // ✅ optional — prevents duplicate field
 
-
-let modelValue = modelSelect.value;
-
-if (modelValue === "Other") {
-  if (otherModelInput.value.trim() !== "") {
-    modelValue = otherModelInput.value.trim(); // input ka value le lo
-  }
-}
-
-const coverageSelect = document.getElementById("coverage");
-const partsInput = document.getElementById("parts");
-
-let coverageValue = coverageSelect.value;
-
-if (coverageValue === "Partial") {
-  if (partsInput.value.trim() !== "") {
-    coverageValue = partsInput.value.trim(); // user input ka value le lo
-  }
-}
-
-// phir formData me set karo
-formData.set("coverage", coverageValue);
-
-
- formData.set("model", modelValue.trim());
   let valid = true;
   const name = form.querySelector("[name='name']");
   if (!name.value.trim()) {
@@ -302,7 +289,7 @@ if (!vehicleRegex.test(vehicleNo.value) || vehicleNo.value.length < 6) {
       const formData = new FormData(form);
       formData.append("imageBase64", base64Data);
 
-      fetch("https://script.google.com/macros/s/AKfycbz9e9WBhb1ze7RKDiCPIgwT_lo8RKlDrU4oce7fLn1M5TS7VDAIAFcgAEWabzxRdzFPIw/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwHldwP3iLkU5Cm0VGbNVKqr73OsNCHCDyRAsxXdYokymtKmdOqOMhU0ISFH6jF4EHHFQ/exec", {
         method: "POST",
         body: formData
       })
