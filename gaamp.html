@@ -638,6 +638,20 @@ left: 4%;
    color: #E80000;
 }
 
+.swal2-popup .swal2-confirm{
+ color: #fff !important;
+  background-color: #c44a4a !important; 
+  padding: 5px 40px !important;
+}
+.swal2-icon-success .swal2-confirm{
+  background-color: #709448 !important;
+}
+.swal2-modal h2{
+  font-size: 1.5rem;
+}
+.swal2-modal p{
+   font-size: 1.2rem;
+}
 
 @media (max-width: 991.98px) {
   .openard {
@@ -1351,7 +1365,8 @@ document.getElementById("getStartedBtn").addEventListener("click", () => {
           cards[index + 1].scrollIntoView({ behavior: "smooth" });
         }
       } else {
-        alert("Please fill all required fields before continuing.");
+          Swal.fire("Please fill all required fields before continuing.", );
+        // alert("Please fill all required fields before continuing.");
       }
     });
   });
