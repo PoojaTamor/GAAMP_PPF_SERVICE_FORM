@@ -758,6 +758,7 @@ margin-bottom: 10px;
 #otherpatsContainer{
   margin-top: -10px;
 }
+
 }
 /* .cardlist{
   border: 1px solid #000;
@@ -767,8 +768,7 @@ margin-bottom: 10px;
   background-color: #E80000 !important;
 } */
 
-
-
+ 
 </style>
 </head>
  
@@ -1048,7 +1048,6 @@ margin-bottom: 10px;
     </div>
    
   </div>
-  <input type="file" class="file-input d-none" accept=".jpg,.png,.jpeg " id="uplodefile" required name="file">
 </label></div>
                 </div>
 
@@ -1056,6 +1055,8 @@ margin-bottom: 10px;
               </div>
             </foreignObject>
           </svg>
+          
+          <input type="file" class="file-input d-none" accept=".jpg,.png,.jpeg " id="uplodefile" required name="file">
         </div>
       </div>
              <div class="col-lg-4 warranty-card px-5 colmenblock ">
@@ -1354,12 +1355,25 @@ document.getElementById("getStartedBtn").addEventListener("click", () => {
   }
 
   // Check if all required fields in a given card are filled
-  function allRequiredFilled(card) {
-    const inputs = Array.from(card.querySelectorAll("input[required], select[required], textarea[required]"))
-      .filter(inp => inp.offsetParent !== null); // visible ones only
-    return inputs.every(inp => inp.value.trim() !== "");
-  }
+ function allRequiredFilled(card) {
+  const inputs = Array.from(card.querySelectorAll("input[required], select[required], textarea[required]"));
 
+  return inputs.every(inp => {
+    if (inp.type === "file") {
+      // File input check even if hidden
+      return inp.files && inp.files.length > 0;
+    } else if (inp.offsetParent !== null) {
+      // Normal visible inputs
+      return inp.value.trim() !== "";
+    } else {
+      return true; // ignore hidden non-file inputs
+    }
+  });
+}
+
+
+
+ 
   // Handle "Next" button click
   document.querySelectorAll(".next-btn").forEach((btn, index) => {
     btn.addEventListener("click", () => {
@@ -1377,7 +1391,6 @@ document.getElementById("getStartedBtn").addEventListener("click", () => {
       }
     });
   });
-
   // "Get Started" button → enable first block
   document.getElementById("getStartedBtn").addEventListener("click", () => {
     enableCard(0);
