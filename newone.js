@@ -164,21 +164,24 @@ document.getElementById("mainForm").addEventListener("submit", function(e) {
   const form = e.target;
   const submitBtn = document.querySelector(".submit-btn");
   console.log(submitBtn)
-  const formData = new FormData(form);
+  // const formData = new FormData(form);
 // ✅ Handle coverage
-      let coverageValue = coverageSelect.value;
-      if (coverageValue === "Partial" && partsInput.value.trim() !== "") {
-        coverageValue = partsInput.value.trim();
-      }
-      formData.set("coverage", coverageValue);
+        let modelSelect = form.model;
+let otherModelInput = document.getElementById("OtherModel");
+let modelValue = modelSelect.value;
 
-      // ✅ Handle model properly
-      let modelValue = modelSelect.value;
-      if (modelValue === "Other" && otherModelInput.value.trim() !== "") {
-        modelValue = otherModelInput.value.trim();
-      }
-      formData.set("model", modelValue); // 🔥 This overwrites “Other” with actual text
-      formData.delete("OtherModel"); // ✅ optional — prevents duplicate field
+if (modelValue === "Other" && otherModelInput && otherModelInput.value.trim() !== "") {
+  modelValue = otherModelInput.value.trim();
+}
+
+let coverageSelect = form.coverage;
+let otherPartsInput = document.getElementById("parts");
+let coverageValue = coverageSelect.value;
+
+if (coverageValue === "Partial" && otherPartsInput && otherPartsInput.value.trim() !== "") {
+  coverageValue = otherPartsInput.value.trim();
+}
+
 
   let valid = true;
   const name = form.querySelector("[name='name']");
@@ -288,6 +291,9 @@ if (!vehicleRegex.test(vehicleNo.value) || vehicleNo.value.length < 6) {
 
       const formData = new FormData(form);
       formData.append("imageBase64", base64Data);
+      formData.set("model", modelValue);
+      formData.set("coverage", coverageValue);
+
 
       fetch("https://script.google.com/macros/s/AKfycbwHldwP3iLkU5Cm0VGbNVKqr73OsNCHCDyRAsxXdYokymtKmdOqOMhU0ISFH6jF4EHHFQ/exec", {
         method: "POST",
