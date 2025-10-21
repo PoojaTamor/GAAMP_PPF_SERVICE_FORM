@@ -653,6 +653,18 @@ left: 4%;
    font-size: 1.2rem;
 }
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+} 
+
+
 @media (max-width: 991.98px) {
   .openard {
     width: 700px;
@@ -755,9 +767,6 @@ margin-bottom: 10px;
     font-size: 1.2rem;
 }
 
-#otherpatsContainer{
-  margin-top: -10px;
-}
 
 }
 /* .cardlist{
@@ -956,15 +965,15 @@ margin-bottom: 10px;
 <div class="col-12">
 <div class="row gx-md-0 gx-5 aling-items-center">
   <div class="col-md-3 col-2">
-            <input type="radio" id="gloss" name="finish" value="Gloss" class="form-radio-input">
+            <input type="radio" id="gloss" name="finish" value="Gloss" class="form-radio-input" required >
             <label for="gloss" class="form-radio-label">[Gloss]</label>
   </div>
     <div class="col-md-3 col-2 mating">
-      <input type="radio" id="matte" name="finish" value="Matte" class="form-radio-input ">
+      <input type="radio" id="matte" name="finish" value="Matte" class="form-radio-input " required>
             <label for="matte" class="form-radio-label">[Matte]</label>
   </div>
     <div class="col-md-3 col-3 ">
-        <input type="radio" id="colored" name="finish" value="Colored" class="form-radio-input ">
+        <input type="radio" id="colored" name="finish" value="Colored" class="form-radio-input " required>
             <label for="colored" class="form-radio-label">[Colored]</label>
   </div>
     <div class="col-md-3 col-3 ">
@@ -976,13 +985,6 @@ margin-bottom: 10px;
 </div>
 </div> 
     <div class="row g-0 align-items-center mt-3">
-                <div class="col-6">
-                  <select id="Warranty" class="form-select" name="warranty" required>
-                    <option value="" selected>[Warranty]</option>
-                    <option value="3 Years">3 Years</option>
-                    <option value="7 Years">7 Years</option>
-                  </select>
-                </div>
 
                 <div class="col-6">
                   <select id="series" class="form-select" name="series" required>
@@ -991,22 +993,19 @@ margin-bottom: 10px;
                     <option value="Clear10000">Clear 10-000</option>
                   </select>
                 </div>
-
-                <div class="col-7 mt-2">
-                  <input type="text" id="uinRoll" class="form-control" placeholder="[UIN] & [ROLL NO]" name="uin" required>
-                </div>
-
-                <div class="col-5 mt-2">
+  <div class="col-6 mt-2">
                   <select id="coverage" class="form-select" name="coverage" required>
                     <option value="" selected>[Coverage]</option>
                     <option value="Full">Full</option>
                     <option value="Partial">Partial</option>
                   </select>
                 </div>
-                 
-              </div>
-                <div
-                    class="col-12 "
+
+                <div class="col-6 mt-2">
+                  <input type="text" id="uinRoll" class="form-control" placeholder="[UIN] & [ROLL NO]" name="uin" required>
+                </div>
+                                <div
+                    class="col-6"
                     id="otherpatsContainer"
                     style="display: none">
                     <input
@@ -1016,6 +1015,8 @@ margin-bottom: 10px;
                       class="form-control custom-input "
                       placeholder="Enter parts"/>
                   </div>
+              </div>
+
 <div>
 </div>
                    </div>
@@ -1335,7 +1336,7 @@ document.getElementById("getStartedBtn").addEventListener("click", () => {
 });
 
 </script>  -->
- <script>
+ <!-- <script>
   const cards = document.querySelectorAll(".card-wrapper");
   let currentStep = -1;
 
@@ -1396,8 +1397,78 @@ document.getElementById("getStartedBtn").addEventListener("click", () => {
     enableCard(0);
     cards[0].scrollIntoView({ behavior: "smooth" });
   });
-</script> 
+</script>  -->
 
+<script>
+  const cards = document.querySelectorAll(".card-wrapper");
+  let currentStep = -1;
+
+  // Initially disable all cards
+  cards.forEach(card => {
+    card.style.pointerEvents = "none";
+    card.style.opacity = "0.4";
+  });
+
+  // Enable a specific card
+  function enableCard(index) {
+    if (index < cards.length) {
+      cards[index].style.pointerEvents = "auto";
+      cards[index].style.opacity = "1";
+      currentStep = index;
+    }
+  }
+
+  // Check if all required fields in a given card are filled
+  function allRequiredFilled(card) {
+    const inputs = Array.from(
+      card.querySelectorAll("input[required], select[required], textarea[required]")
+    );
+
+    // ✅ Step 1: check PPF Type radios (Gloss / Matte / Colored)
+    const ppfRadios = card.querySelectorAll('input[name="finish"][type="radio"]');
+    let isPPFSelected = true;
+    if (ppfRadios.length > 0) {
+      isPPFSelected = Array.from(ppfRadios).some(r => r.checked);
+    }
+
+    // ✅ Step 2: check all other required fields
+    const allFilled = inputs.every(inp => {
+      if (inp.type === "file") {
+        return inp.files && inp.files.length > 0;
+      } else if (inp.type === "radio") {
+        // Skip radio here (we already validated separately)
+        return true;
+      } else if (inp.offsetParent !== null) {
+        return inp.value.trim() !== "";
+      } else {
+        return true; // ignore hidden inputs
+      }
+    });
+
+    return allFilled && isPPFSelected;
+  }
+
+  // Handle "Next" button click
+  document.querySelectorAll(".next-btn").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      const currentCard = cards[index];
+      if (allRequiredFilled(currentCard)) {
+        if (index + 1 < cards.length) {
+          enableCard(index + 1);
+          cards[index + 1].scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        Swal.fire("Please fill all required fields before continuing.");
+      }
+    });
+  });
+
+  // "Get Started" button → enable first block
+  document.getElementById("getStartedBtn").addEventListener("click", () => {
+    enableCard(0);
+    cards[0].scrollIntoView({ behavior: "smooth" });
+  });
+</script>
 
 
 </body>
