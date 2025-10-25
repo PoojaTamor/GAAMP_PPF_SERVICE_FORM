@@ -1,7 +1,5 @@
+// Select all card-contents
 
-    
-
-  // Select all card-contents
   document.querySelectorAll(".cardlist").forEach(card => {
     const heading = card.querySelector(".card-title-open");
     const fields = card.querySelector(".formInputs");
@@ -16,11 +14,9 @@
         fields.classList.add("show");
       }, 600);
     });
-  });
+});
 
-
-  
-  const modelData = {
+const modelData = {
   Audi: ["A3", "A3 Cabriolet", "A4", "A6", "A6 Matrix", "Q2", "Q3", "Q5", "Q7", "R8", "RS5", "RS6", "RS7 Sportback", "S5 Sportback", "TT"],
   BMW: ["2 Series Gran Coupe", "3 Series", "3 Series GT", "4 Series", "5 Series", "5 Series GT", "6 Series", "7 Series", "8 Series", "i8", "M3", "M5", "X1", "X3", "X4", "X5", "X6", "Z4"],
   BYD: ["Atto 3", "Seal", "E6", "Dolphin", "Tang", "Song Plus"],
@@ -50,43 +46,44 @@
 };
 
 const brandSelect = document.getElementById("Brand");
-      const modelSelect = document.getElementById("Model");
-      const otherModelInput = document.getElementById("OtherModel");
+const modelSelect = document.getElementById("Model");
+const otherModelInput = document.getElementById("OtherModel");
 
 
-      console.log(document.getElementById("Brand"));
+console.log(document.getElementById("Brand"));
 console.log(document.getElementById("Model"));
-      brandSelect.addEventListener("change", function () {
-        const selectedBrand = brandSelect.value;
-        modelSelect.innerHTML =
-          '<option value="" selected disabled>Select Model</option>';
 
-        if (modelData[selectedBrand]) {
-          modelData[selectedBrand].forEach((model) => {
-            const option = document.createElement("option");
-            option.value = model;
-            option.textContent = model;
-            modelSelect.appendChild(option);
-          });
+brandSelect.addEventListener("change", function () {
+const selectedBrand = brandSelect.value;
+modelSelect.innerHTML =
+'<option value="" selected disabled>Select Model</option>';
+
+if (modelData[selectedBrand]) {
+    modelData[selectedBrand].forEach((model) => {
+    const option = document.createElement("option");
+    option.value = model;
+    option.textContent = model;
+    modelSelect.appendChild(option);
+});
 
           // Add "Other" option
-          const otherOption = document.createElement("option");
-          otherOption.value = "Other";
-          otherOption.textContent = "Other";
-          modelSelect.appendChild(otherOption);
+    const otherOption = document.createElement("option");
+    otherOption.value = "Other";
+    otherOption.textContent = "Other";
+    modelSelect.appendChild(otherOption);
 
-          modelSelect.disabled = false;
+    modelSelect.disabled = false;
         } else {
           modelSelect.disabled = true;
         }
 
         // Hide Other input when brand changes
-        otherModelContainer.style.display = "none";
-        otherModelInput.value = "";
-      });
+          otherModelContainer.style.display = "none";
+          otherModelInput.value = "";
+});
 
       // Model change
-      modelSelect.addEventListener("change", function () {
+modelSelect.addEventListener("change", function () {
         if (modelSelect.value === "Other") {
           otherModelContainer.style.display = "block";
           otherModelInput.focus();
@@ -96,7 +93,9 @@ console.log(document.getElementById("Model"));
           otherModelInput.value = "";
            otherModelInput.required = false;
         }
-      });
+});
+
+
 // Model change
 modelSelect.addEventListener("change", function () {
   if (modelSelect.value === "Other") {
@@ -109,8 +108,6 @@ modelSelect.addEventListener("change", function () {
     otherModelInput.required = false;
   }
 });
-
-
 
   // Form submit
   // document.getElementById("mainForm").addEventListener("submit", function (e) {
@@ -182,58 +179,54 @@ if (coverageValue === "Partial" && otherPartsInput && otherPartsInput.value.trim
   coverageValue = otherPartsInput.value.trim();
 }
 
+let valid = true;
 
-  let valid = true;
-  const name = form.querySelector("[name='name']");
-  if (!name.value.trim()) {
-    valid = false;
-     Swal.fire("Missing Fields", "Please enter your full name.",);
-  }
+const name = form.querySelector("[name='name']");
+if (!name.value.trim()) {
+  Swal.fire("Missing Fields", "Please enter your full name.");
+  return;
+}
 
-  const phone = form.querySelector("[name='phone']");
-  if (!/^[0-9]{10}$/.test(phone.value.trim())) {
-    valid = false;
-     Swal.fire("Invalid Phone", "Phone number must be 10 digits.",);
-  }
+const phone = form.querySelector("[name='phone']");
+if (!/^[0-9]{10}$/.test(phone.value.trim())) {
+  Swal.fire("Invalid Phone", "Phone number must be 10 digits.");
+  return;
+}
 
-  const email = form.querySelector("[name='email']");
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.value.trim())) {
-    valid = false;
-  Swal.fire("Invalid Email", "Please enter a valid email address.", );
+const email = form.querySelector("[name='email']");
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email.value.trim())) {
+  Swal.fire("Invalid Email", "Please enter a valid email address.");
+  return;
+}
 
-  }
-  
-
-  const vehicleNo = form.querySelector("input[placeholder='[Vehicle No.]']");
-  // if (!vehicleNo.value.trim()) {
-  //   valid = false;
-  //   alert("Please enter vehicle number.");
-  // }
- // sirf letters aur numbers
+const vehicleNo = form.querySelector("input[placeholder='[Vehicle No.]']");
 let vehicleRegex = /^[A-Za-z0-9]+$/;
 if (!vehicleRegex.test(vehicleNo.value) || vehicleNo.value.length < 6) {
   Swal.fire("Invalid Vehicle Number", "Vehicle number must be at least 6 characters (letters and numbers only).");
   return;
 }
-  const brand = form.querySelector("[name='brand']");
-  if (!brand.value) {
-    valid = false;
-  Swal.fire("Car Brand Required", "Please select car brand.", );
 
-  }
+const brand = form.querySelector("[name='brand']");
+if (!brand.value) {
+  Swal.fire("Car Brand Required", "Please select car brand.");
+  return;
+}
 
-  const model = form.querySelector("[name='model']");
-  if (!model.value) {
-    valid = false;
-  Swal.fire("Car Model Required", "Please enter car model.", );
+const model = form.querySelector("[name='model']");
+if (!model.value) {
+  Swal.fire("Car Model Required", "Please enter car model.");
+  return;
+}
 
-  }
+
+
+
 
   const fileInput = document.getElementById("uplodefile");
   if (fileInput.files.length === 0) {
-    valid = false;
   Swal.fire("Car Image Required", "Please upload car image.", );
+    return;
 
   } else {
     const file = fileInput.files[0];
@@ -243,7 +236,7 @@ if (!vehicleRegex.test(vehicleNo.value) || vehicleNo.value.length < 6) {
   Swal.fire("Required", "File must be JPG, JPEG, or PNG.", );
 
     }
-    if (file.size > 10 * 1024) { // 10 KB
+    if (file.size > 20 * 1024) { // 10 KB
       valid = false;
   Swal.fire("Required", "File must be smaller than 10KB.", );
     }
@@ -295,7 +288,7 @@ if (!vehicleRegex.test(vehicleNo.value) || vehicleNo.value.length < 6) {
       formData.set("coverage", coverageValue);
 
 
-      fetch("https://script.google.com/macros/s/AKfycbwHldwP3iLkU5Cm0VGbNVKqr73OsNCHCDyRAsxXdYokymtKmdOqOMhU0ISFH6jF4EHHFQ/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwTmWTsm09NI3bp0SFBohiNxhlQ8PFHmOm-X5xWcRh1qHuwtN_SDNorrxN2wqDtRRDkzA/exec", {
         method: "POST",
         body: formData
       })
